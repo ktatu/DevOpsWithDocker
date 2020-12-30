@@ -1,1 +1,1 @@
-https://hub.docker.com/repository/docker/ktatu/1-15
+https://hub.docker.com/r/ktatu/1-15
