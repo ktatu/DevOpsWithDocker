@@ -1,0 +1,15 @@
+version: "3.5"
+
+services:
+
+    backend:
+        image: 23_back
+        ports:
+          - 8000:8000
+        volumes:
+          - ./logs.txt:/logs.txt
+
+    frontend:
+       image: 23_front
+       ports:
+         - 5000:5000
