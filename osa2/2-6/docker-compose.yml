@@ -1,0 +1,37 @@
+version: "3.5"
+
+services:
+
+    backend:
+        image: 23_back
+        restart: unless-stopped
+        ports:
+          - 8000:8000
+        environment:
+          - REDIS=redis-server
+          - DB_USERNAME=testiuser
+          - DB_PASSWORD=testipass
+          - DB_NAME=psql_db
+          - DB_HOST=psql_db
+
+    frontend:
+        image: 23_front
+        ports:
+          - 5000:5000
+
+    redis:
+        image: redis
+        hostname: redis-server
+        container_name: redis-server
+        restart: unless-stopped
+        ports:
+          -  6379:6379
+
+    psql_db:
+        image: postgres
+        container_name: psql
+        restart: unless-stopped
+        environment:
+          - POSTGRES_PASSWORD=testipass
+          - POSTGRES_USER=testiuser
+          - POSTGRES_DB=psql_db
