@@ -1,0 +1,28 @@
+version: "3.5"
+
+services:
+
+    frontend:
+        image: 27-front
+        ports:
+          - 3000:3000
+
+    backend:
+        image: 27-back
+        ports: 
+          - 5000:5000
+        volumes:
+          - files_shared:/src/model
+
+    training:
+        image: 27-training
+        depends_on:
+          - backend
+        volumes:
+          - files_training:/src/imgs
+          - files_training:/src/data
+          - files_shared:/src/model
+
+volumes:
+    files_shared:
+    files_training:
