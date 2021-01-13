@@ -1,0 +1,13 @@
+FROM node:alpine
+
+EXPOSE 8000
+
+COPY ./backend-example-docker /app
+
+WORKDIR /app/backend-example-docker
+
+RUN npm install 
+
+CMD FRONT_URL=http://localhost:5000 npm start
+
+
